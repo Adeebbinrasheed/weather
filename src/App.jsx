@@ -5,7 +5,8 @@ import { FaCompass } from "react-icons/fa";
 
 const App = () => {
   const [data,setData]=useState([])
-  const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13/kerala';
+  const [search,setSearch]=useState("")
+  const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13q='+encodeURIComponent(search);
 const options = {
 	method: 'GET',
 	headers: {
@@ -29,21 +30,39 @@ const options = {
   useEffect(() => {
     fData();
   },[]);
+  
+  const searchData=(event)=>{
+    setSearch(event.target.value)
+
+  }
+
+  const handleSubmit=(e)=>{
+    // e.preventDefault()
+    // fData()
+
+  }
+  const change=(e)=>{
+    e.preventDefault()
+    fData()
+    setSearch("")
+
+  }
 
   return(
-    <div className=" bg-hero bg-cover h-screen flex flex-col justify-center items-center space-y-8 ">
-      <form>
+    <div className=" bg-[url('./src/assets/pic4.avif')] bg-cover h-screen flex flex-col justify-center items-center space-y-8 ">
+     
+      {
+        data.map((data)=>(
+          <div className="text-gray-300 space-y-5 p-3 bg-opacity-80 w-72 h-96 rounded-2xl bg-gray-700 md:w-[600px] sm:w-96 lg:w-[700px]">
+             <form onSubmit={handleSubmit}>
       <div className="relative">
         
 
-        <input className="bg-black bg-opacity-70 text-white w-80 p-2 rounded-full placeholder:text-sm md:w-[600px] sm:w-96 lg:w-[700px]" type="text" placeholder="Find your location..." required/>
-        <button className="absolute text-white bg-blue-500 rounded-full focus:ring-2 focus:ring-blue-300 focus:outline-none px-5 py-1 end-1 bottom-1 md:px-7">Find</button>
+        <input className="bg-black bg-opacity-70 text-white w-64 p-2 rounded-full placeholder:text-sm md:w-[600px] sm:w-96 lg:w-[700px]" type="text" value={search} placeholder="Find your location..." onChange={searchData} required/>
+        <button className="absolute text-white bg-teal-400 rounded-full focus:ring-2 focus:ring-blue-300 focus:outline-none px-2 py-1 end-3 bottom-1 md:px-7" onClick={change}>Find</button>
         </div>
 
       </form>
-      {
-        data.map((data)=>(
-          <div className="text-gray-300 space-y-5 p-3 bg-opacity-60 w-80 h-80 rounded-2xl bg-gray-700 md:w-[600px] sm:w-96 lg:w-[700px]">
           <div className="">
             <h3 className="text-lg  font-medium">{data.location.name}</h3>
           </div>
