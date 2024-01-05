@@ -61,7 +61,7 @@ const App = () => {
                 required
               />
               <button
-                className="absolute text-white bg-teal-400 rounded-full focus:ring-2 focus:ring-blue-300 focus:outline-none px-2 py-1 end-1 bottom-1 md:px-3"
+                className="absolute text-white bg-teal-400 rounded-full focus:outline-none focus:border-none px-2 py-1 end-1 bottom-1 md:px-3"
                 onClick={change}
               >
                 Find
