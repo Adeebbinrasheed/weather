@@ -6,8 +6,15 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage:{
+        'hero':"url('./assets/pic4.avif')"
+
+      }
+      
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
 
