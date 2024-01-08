@@ -72,7 +72,7 @@ const App = () => {
             <h3 className="text-lg  font-medium">{data.location.name}</h3>
           </div>
           <div className="">
-            <h1 className="text-8xl font-semibold ">{data.current.temp_c}°C</h1>
+            <h1 className="text-7xl font-semibold ">{data.current.temp_c}°C</h1>
             <img
               src={`${data.current.condition.icon}`}
               alt=""
